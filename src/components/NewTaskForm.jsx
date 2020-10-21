@@ -25,12 +25,16 @@ class NewTaskForm extends React.Component {
     const { handleSubmit } = this.props;
 
     return (
-      <form className="form-inline" onSubmit={handleSubmit(this.handleSubmit)}>
-        <div className="form-group mx-3">
+      <div className="row justify-content-center">
+        <div className="col-12 col-sm-8 col-md-6">
+      <form className="form-inline justify-content-center" onSubmit={handleSubmit(this.handleSubmit)}>
+        <div className="form-group">
           <Field name="text" required component="input" type="text" />
         </div>
-        <input type="submit" className="btn btn-primary btm-sm" value="Add" />
+        <button type="submit" className="btn btn-primary btm-sm">Add</button>
       </form>
+      </div>
+      </div>
     );
   }
 }

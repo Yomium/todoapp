@@ -3,7 +3,8 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import './css/index.css';
-import App from './components/App.jsx';
+import NewTaskForm from './components/NewTaskForm.jsx';
+import Tasks from './components/Tasks.jsx';
 import reducers from './reducers/index.js';
 
 const store = createStore(
@@ -13,7 +14,8 @@ const store = createStore(
 
 render(
 	<Provider store={store} >
-		<App />
+		<NewTaskForm />
+		<Tasks />
 	</Provider>,
-	document.getElementById('container'),
+	document.getElementById('root'),
 );

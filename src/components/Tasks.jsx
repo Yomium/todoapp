@@ -5,7 +5,8 @@ import * as actions from '../actions/index.js';
 const mapStateToProps = (state) => {
   const { tasks: { byId, allIds } } = state;
   const tasks = allIds.map((id) => byId[id]);
-  return { tasks };
+  const props = { tasks };
+  return props;
 }
 
 const actionCreators = {
@@ -32,21 +33,22 @@ class Tasks extends React.Component {
     }
 
     return (
-      <div className="mt-3">
-        <ul className="list-group">
+      <div className="row justify-content-center">
+        <div className="col-12 col-sm-10 col-md-8">
           {tasks.map(({ id, text, state }) => (
             <li key={id} className="list-group-item d-flex">
               <span className="mr-auto">
-                <button type="button" className="btn btn-link p-0 text-decoration-none" data-test="task-toggle-state" onClick={this.handleToggleTaskState(id)}>
+                <input id={`input${id}`} type="checkbox" checked={state === 'finished'} onChange={this.handleToggleTaskState(id)} />
+                <label htmlFor={`input${id}`}>
                   {state === 'active' ? text : <s>{text}</s>}
-                </button>
+                </label>
               </span>
               <button type="button" data-test="task-remove" className="close" onClick={this.handleRemoveTask(id)}>
                 <span>&times;</span>
               </button>
             </li>
           ))}
-        </ul>
+      </div>
       </div>
     );
   }
