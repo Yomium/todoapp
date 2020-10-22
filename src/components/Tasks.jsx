@@ -36,7 +36,6 @@ class Tasks extends React.Component {
       <div className="target">
         <input id={`input${task.id}`} type="checkbox" checked={task.state === 'finished'} onChange={this.handleToggleTaskState(task.id)} />
         <label htmlFor={`input${task.id}`}>
-          <span></span>
           {task.text}
         </label>
       </div>
