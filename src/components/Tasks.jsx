@@ -27,16 +27,17 @@ class Tasks extends React.Component {
   }
 
   renderTask = (task) => {
-    const classes = cn({
+    const targetClasses = cn({
       'task': true,
       [task.state]: true,
     });
 
-    return (<div key={task.id} className={classes}>
+    return (<div key={task.id} className={targetClasses}>
       <div className="target">
         <input id={`input${task.id}`} type="checkbox" checked={task.state === 'finished'} onChange={this.handleToggleTaskState(task.id)} />
         <label htmlFor={`input${task.id}`}>
-          {task.state === 'active' ? task.text: <s>{task.text}</s>}
+          <span></span>
+          {task.text}
         </label>
       </div>
       <button type="button" data-test="task-remove" className="close" onClick={this.handleRemoveTask(task.id)}>
