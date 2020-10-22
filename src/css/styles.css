@@ -1,0 +1,74 @@
+@font-face {
+  font-family: Ubuntu;
+  src: url(./fonts/Ubuntu-Regular.ttf);
+}
+
+body {
+  font-family: Ubuntu;
+}
+
+.section {
+  background: url('./images/background.jpg');
+  min-height: 100vh;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  border: 2px solid #857b7b;
+  background-color: rgb(244,244,244);
+}
+
+.task:hover {
+  background-color: rgb(225,225,225);
+}
+
+.target label {
+  margin-left: 10px;
+}
+
+.target {
+  margin-left: 15px;
+  margin-top: 9px;
+}
+
+.form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.heading {
+  text-align: center;
+  color: white;
+}
+
+.addTaskBtn {
+  height: 38px;
+  background: #515151;
+  color: #ffffff;
+}
+
+.form-control {
+  width: 95%;
+}
+
+.addTaskBtn:hover {
+  color: #bcbcbc;
+}
+
+.finished {
+  color: rgba(33, 27, 27, 0.86);
+  border-color: rgb(71, 71, 71);
+  text-decoration: line-through;
+}
+
+.finished:hover {
+  background-color: rgba(231, 231, 231, 1);
+}
+
+.close {
+  margin-right: 10px;
+}

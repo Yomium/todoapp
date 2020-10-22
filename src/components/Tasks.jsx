@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/index.js';
+import cn from 'classnames';
 
 const mapStateToProps = (state) => {
   const { tasks: { byId, allIds } } = state;
@@ -25,6 +26,25 @@ class Tasks extends React.Component {
     toggleTaskState({ id });
   }
 
+  renderTask = (task) => {
+    const classes = cn({
+      'task': true,
+      [task.state]: true,
+    });
+
+    return (<div key={task.id} className={classes}>
+      <div className="target">
+        <input id={`input${task.id}`} type="checkbox" checked={task.state === 'finished'} onChange={this.handleToggleTaskState(task.id)} />
+        <label htmlFor={`input${task.id}`}>
+          {task.state === 'active' ? task.text: <s>{task.text}</s>}
+        </label>
+      </div>
+      <button type="button" data-test="task-remove" className="close" onClick={this.handleRemoveTask(task.id)}>
+        <span>&times;</span>
+      </button>
+    </div>);
+  };
+
   render() {
     const { tasks } = this.props;
 
@@ -34,21 +54,9 @@ class Tasks extends React.Component {
 
     return (
       <div className="row justify-content-center">
-        <div className="col-12 col-sm-10 col-md-8">
-          {tasks.map(({ id, text, state }) => (
-            <li key={id} className="list-group-item d-flex">
-              <span className="mr-auto">
-                <input id={`input${id}`} type="checkbox" checked={state === 'finished'} onChange={this.handleToggleTaskState(id)} />
-                <label htmlFor={`input${id}`}>
-                  {state === 'active' ? text : <s>{text}</s>}
-                </label>
-              </span>
-              <button type="button" data-test="task-remove" className="close" onClick={this.handleRemoveTask(id)}>
-                <span>&times;</span>
-              </button>
-            </li>
-          ))}
-      </div>
+        <div className="col-12 col-sm-10 col-md-6">
+          {tasks.map(this.renderTask)}
+          </div>
       </div>
     );
   }

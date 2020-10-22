@@ -26,13 +26,13 @@ class NewTaskForm extends React.Component {
 
     return (
       <div className="row justify-content-center">
-        <div className="col-12 col-sm-8 col-md-6">
-      <form className="form-inline justify-content-center" onSubmit={handleSubmit(this.handleSubmit)}>
-        <div className="form-group">
-          <Field name="text" required component="input" type="text" />
-        </div>
-        <button type="submit" className="btn btn-primary btm-sm">Add</button>
-      </form>
+        <div className="col-8 col-md-5 col-lg-4 justify-content-center">
+          <form className="form" onSubmit={handleSubmit(this.handleSubmit)}>
+            <div className="form-group">
+              <Field name="text" className="form-control" required component="input" type="text" />
+            </div>
+            <button type="submit" className="btn addTaskBtn">Add</button>
+          </form>
       </div>
       </div>
     );
