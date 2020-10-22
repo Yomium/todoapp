@@ -7,12 +7,8 @@ import NewTaskForm from './components/NewTaskForm.jsx';
 import Tasks from './components/Tasks.jsx';
 import reducers from './reducers/index.js';
 
-const ext = window.__REDUX_DEVTOOLS_EXTENSION__;
-const devtoolMiddleware = ext && ext();
-
 const store = createStore(
 	reducers,
-	devtoolMiddleware,
 );
 
 render(
